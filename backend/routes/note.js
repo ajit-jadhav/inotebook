@@ -11,7 +11,7 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
   res.json(note);
 });
 
-//ROUTE 2: add new note : GET "/api/note/addnote". No login required
+//ROUTE 2: add new note : POST "/api/note/addnote". No login required
 
 router.post(
   "/addnote",
@@ -48,7 +48,7 @@ router.post(
 );
 
 
-//ROUTE 2: update existing note : GET "/api/note/updatenote". No login required
+//ROUTE 3: update existing note : PUT "/api/note/updatenote". No login required
 
 router.put(
   "/updatenote/:id",
@@ -72,6 +72,37 @@ router.put(
       note = await Note.findByIdAndUpdate(req.params.id,{$set:newNote},{new:true})
 
       res.json(note);
+
+    } catch (error) {
+      console.log(error)
+      console.error(error.message);
+      res.status(500).send("Something went wrong !");
+    }
+  }
+);
+
+
+//ROUTE 4: delete existing note : DELETE "/api/note/deletenote". No login required
+
+router.delete(
+  "/deletenote/:id",
+  fetchuser,
+  async (req, res) => {
+    try {
+      const { title, description, tag } = req.body;
+
+      
+      //find note to be deleted
+      let note = await Note.findById(req.params.id);
+      if(!note){res.status(404).send("Not Found!")}
+
+      if(note.user.toString()!==req.user.id){
+        return res.status(401).send("Not allowed!")
+      }
+
+      note = await Note.findByIdAndDelete(req.params.id)
+
+      res.json({"Success":"Note deleted successfully!!", note:note});
 
     } catch (error) {
       console.log(error)

@@ -4,7 +4,7 @@ import { useState } from 'react';
 const NoteState = (props)=>{
     const notesInitial = [
         {
-          "_id": "62406592e55d64f95df318e2",
+          "_id": "62406592fghe55yud64f95df318e2",
           "user": "624027ed128a21fc8cbe41ad",
           "title": "my first note",
           "description": "this is test",
@@ -13,7 +13,7 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-          "_id": "624d05529fc9267e8b904f2d",
+          "_id": "624d055hjk29fc9ty267e8b904f2d",
           "user": "624027ed128a21fc8cbe41ad",
           "title": "my note 2",
           "description": "this is test 2",
@@ -22,7 +22,7 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-          "_id": "624d055b9fc9267e8b904f2f",
+          "_id": "624d055bqw9fc926er7e8b904f2f",
           "user": "624027ed128a21fc8cbe41ad",
           "title": "my note 3",
           "description": "this is test 3",
@@ -31,7 +31,7 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-            "_id": "62406592e55d64f95df318e2",
+            "_id": "62406592e34555dwe64f95df318e2",
             "user": "624027ed128a21fc8cbe41ad",
             "title": "my first note",
             "description": "this is test",
@@ -40,7 +40,7 @@ const NoteState = (props)=>{
             "__v": 0
           },
           {
-            "_id": "624d05529fc9267e8b904f2d",
+            "_id": "624d05525679f45c9267e8b904f2d",
             "user": "624027ed128a21fc8cbe41ad",
             "title": "my note 2",
             "description": "this is test 2",
@@ -49,7 +49,7 @@ const NoteState = (props)=>{
             "__v": 0
           },
           {
-            "_id": "62406592e55d64f95df318e2",
+            "_id": "62406592e589512d64f95df318e2",
             "user": "624027ed128a21fc8cbe41ad",
             "title": "my first note",
             "description": "this is test",
@@ -58,7 +58,7 @@ const NoteState = (props)=>{
             "__v": 0
           },
           {
-            "_id": "624d05529fc9267e8b904f2d",
+            "_id": "624d05529f12c922367e8b904f2d",
             "user": "624027ed128a21fc8cbe41ad",
             "title": "my note 2",
             "description": "this is test 2",
@@ -67,7 +67,7 @@ const NoteState = (props)=>{
             "__v": 0
           },
           {
-            "_id": "62406592e55d64f95df318e2",
+            "_id": "62406592e545645d6453f95df318e2",
             "user": "624027ed128a21fc8cbe41ad",
             "title": "my first note",
             "description": "this is test",
@@ -76,7 +76,7 @@ const NoteState = (props)=>{
             "__v": 0
           },
           {
-            "_id": "624d05529fc9267e8b904f2d",
+            "_id": "624d05529fc567926457e8b904f2d",
             "user": "624027ed128a21fc8cbe41ad",
             "title": "my note 2",
             "description": "this is test 2",

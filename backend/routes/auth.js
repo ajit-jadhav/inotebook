@@ -69,6 +69,7 @@ router.post(
     body("password", "Can not blank").exists(),
   ],
   async (req, res) => {
+    let success=false
     // Finds the validation errors in this request and wraps them in an object with handy functions
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -79,16 +80,14 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        return res
-          .status(400)
-          .json({ erro: "Please enter valid credentials!" });
+        success=false
+        return res.status(400).json({ erro: "Please enter valid credentials!" });
       }
 
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
-        return res
-          .status(400)
-          .json({ erro: "Please enter valid credentials!" });
+        success=false
+        return res.status(400).json({  erro: "Please enter valid credentials!" });
       }
 
       const payload = {
@@ -97,7 +96,8 @@ router.post(
         },
       };
       const authToken = jwt.sign(payload, JWT_SECRET);
-      res.json({ authToken });
+      success=true;
+      res.json({ success, authToken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Internal server error.  Something went wrong !");
@@ -108,15 +108,15 @@ router.post(
 //ROUTE 3:Authenticate a User using : POST "/api/auth/getuser". Login required
 router.post("/getuser", fetchuser, async (req, res) => {
 
-    try {
-      userId = req.user.id;
-      const user = await User.findById(userId).select("-password");
-      res.status(200).send(user);
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).send("Internal server error.  Something went wrong !");
-    }
+  try {
+    userId = req.user.id;
+    const user = await User.findById(userId).select("-password");
+    res.status(200).send(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal server error.  Something went wrong !");
   }
+}
 );
 
 module.exports = router;

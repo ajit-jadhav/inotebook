@@ -11,7 +11,7 @@ const JWT_SECRET = "TestAjit";
     try {
         const data = jwt.verify(token,  JWT_SECRET)
     req.user = data.user;
-    next()
+    next();
     } catch (error) {
         console.log(error)
         res.status(401).send({error:"Please authenticate using valid token2."})
